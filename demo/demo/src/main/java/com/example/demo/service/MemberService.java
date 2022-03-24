@@ -8,8 +8,12 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-
-    private final MemberRepository memberRepo = new MemoryMemberRepository();
+    
+    //private final MemberRepository memberRepo = new MemoryMemberRepository();//기존의 선언 방식
+    private final MemberRepository memberRepo;
+    public MemberService(MemberRepository memberRepo) {
+        this.memberRepo = memberRepo;
+    }
 
     /**
      * 회원가입
