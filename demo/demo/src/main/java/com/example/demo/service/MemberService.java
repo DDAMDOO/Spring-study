@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Transactional
 public class MemberService {
-    
+
     //private final MemberRepository memberRepo = new MemoryMemberRepository();//기존의 선언 방식
     private final MemberRepository memberRepository;
 
@@ -20,11 +20,11 @@ public class MemberService {
 
     /**
      * 회원가입
+     *
      * @param member
      * @return id
      */
     public Long join(Member member) {
-
 //        Optional<Member> rst = memberRepo.findByName(member.getName());
 //
 //        rst.ifPresent(m -> {
@@ -34,6 +34,7 @@ public class MemberService {
 
         memberRepository.save(member);
         return member.getId();
+
     }
 
     /**
@@ -46,14 +47,14 @@ public class MemberService {
     /**
      * 회원 조회
      */
-    public Optional<Member> findOne(Long memberId){
+    public Optional<Member> findOne(Long memberId) {
         return memberRepository.findById(memberId);
     }
 
     private void validateDuplicateMember(Member member) {
         memberRepository.findByName(member.getName())
-                        .ifPresent(m -> {
-                            throw new IllegalStateException("이미 존재하는 이름입니다.");
-                        });
+                .ifPresent(m -> {
+                    throw new IllegalStateException("이미 존재하는 이름입니다.");
+                });
     }
 }

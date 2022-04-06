@@ -1,6 +1,7 @@
 package com.example.demo;
 
 
+import com.example.demo.aop.TimeTraceAop;
 import com.example.demo.repository.*;
 import com.example.demo.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class SpringConfig {
     public MemberService memberService(){
         return new MemberService(memberRepository);
     }
+
+//    @Bean//component scan으로 해도 되지만 직관적으로 보기 위해서 추가
+//    public TimeTraceAop timeTraceAop(){
+//        return new TimeTraceAop();
+//    }
 
 //    @Bean
 //    public MemberRepository memberRepository(){
